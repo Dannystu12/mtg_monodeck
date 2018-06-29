@@ -11,8 +11,46 @@
 </head>
 <body>
   <h1>Monodeck</h1>
-  <select id="color-select">
-    <option selected disabled></option>
-  </select>
+  <form id="input-criteria">
+    <table>
+      <tr>
+        <td>
+          <label for="color-select" class="primary">Color</label>
+        </td>
+        <td>
+          <select id="color-select">
+            <option selected disabled></option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="lands" class="primary">Lands</label></td>
+        <td><input type="number" id="lands" min="0" value="26" required></td>
+      </tr>
+      <tr>
+        <td><label for="creatures" class="primary">Creatures</label></td>
+        <td><input type="number" id="creatures" min="0" value="21" required></td>
+      </tr>
+      <tr>
+        <td><label for="sorceries" class="primary">Sorceries</label></td>
+        <td><input type="number" id="sorceries" min="0" value="4" required></td>
+      </tr>
+      <tr>
+        <td><label for="enchantments" class="primary">Enchantments</label></td>
+        <td><input type="number" id="enchantments" min="0" value="4" required></td>
+      </tr>
+      <tr>
+        <td><label for="artifacts" class="primary">Artifacts</label></td>
+        <td><input type="number" id="artifacts" min="0" value="2" required></td>
+      </tr>
+      <tr>
+        <td><label for="instants" class="primary">Instants</label></td>
+        <td>  <input type="number" id="instants" min="0" value="7" required></td>
+      </tr>
+    </table>
+  </form>
+
+  <div id="result-div">
+  </div>
 </body>
 </html>

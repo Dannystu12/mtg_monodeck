@@ -8,6 +8,10 @@ SelectView.prototype.bindEvents = function () {
   PubSub.subscribe("DeckBuilder:deck-colors", event => {
       this.populate(event.detail);
   });
+  this.selectElement.addEventListener("change", (event) => {
+    const selectedIndex = event.target.value;
+    PubSub.publish("SelectView:selection-made", selectedIndex);
+  });
 };
 
 SelectView.prototype.populate = function (colors) {

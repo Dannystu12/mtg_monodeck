@@ -3,7 +3,7 @@ const Request = function(url) {
 };
 
 Request.prototype.get = function (callback) {
-  fetch(url)
+  fetch(this.url)
   .then(response => response.json()
     .then(data => callback(data)))
   .catch(err => console.error(err));
