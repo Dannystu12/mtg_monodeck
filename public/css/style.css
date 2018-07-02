@@ -1,4 +1,7 @@
 body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #383A3F;
   font-family: 'Encode Sans Semi Expanded', sans-serif;
   color: #F6B352;
@@ -7,4 +10,36 @@ body{
 h1, h2, h3, h4{
   font-family: 'Galada', cursive;
   color: #F68657;
+}
+
+td.center{
+  text-align: center;
+}
+
+form{
+  background-color: #F68657;
+  padding: 1%;
+  border-radius: 10%;
+}
+form label {
+  color: #383A3F;
+}
+
+.result-div {
+  padding: 1%;
+}
+
+.card {
+  display: inline-block;
+  padding: 5%;
+}
+.card-img{
+  display: inline;
+  width: 223px;
+  padding:1%;
+}
+
+.card-qty{
+  text-align: center;
+  margin: 1%;
 }

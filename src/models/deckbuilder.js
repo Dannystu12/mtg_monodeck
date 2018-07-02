@@ -3,20 +3,27 @@ const Request = require('../helpers/request.js');
 
 const DeckBuilder = function () {
   this.colors = ['Black', 'White', 'Blue', 'Green', 'Red'];
+  this.cards = [];
 };
 
 DeckBuilder.prototype.bindEvents = function () {
   PubSub.publish("DeckBuilder:deck-colors", this.colors);
-  PubSub.subscribe("SelectView:selection-made", event => {
-    this.getCards(this.colors[event.detail]);
+  PubSub.subscribe('FormView:criteria-loaded', event => {
+    this.buildDeck(event.detail);
   });
 };
 
-DeckBuilder.prototype.getCards = function (color) {
-  const request = new Request(`https://api.magicthegathering.io/v1/cards?colors=${color}&pageSize=10`);
+DeckBuilder.prototype.buildDeck = function (criteria) {
+  console.log(criteria);
+  const color = this.colors[criteria.color];
+  const request = new Request(`https://api.magicthegathering.io/v1/cards?types=land&colorIdentity=${color[0]}&pageSize=1`);
   request.get(data => {
-    this.cards = data.cards;
-    PubSub.publish("DeckBuilder:data-loaded", this.cards);
+    const landCard = data.cards[0];
+    landCard.qty = criteria.lands;
+    if(landCard.qty > 0){
+      this.cards.push(landCard)
+      PubSub.publish("DeckBuilder:data-loaded", this.cards);
+    }
   });
 };
 

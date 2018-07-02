@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Monodeck</title>
   <style>
   @import url('https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded|Galada');
   </style>
@@ -18,34 +18,37 @@
           <label for="color-select" class="primary">Color</label>
         </td>
         <td>
-          <select id="color-select">
+          <select id="color-select" required>
             <option selected disabled></option>
           </select>
         </td>
       </tr>
       <tr>
         <td><label for="lands" class="primary">Lands</label></td>
-        <td><input type="number" id="lands" min="0" value="26" required></td>
+        <td><input type="number" id="lands" min="0" max="50" value="26" required></td>
       </tr>
       <tr>
         <td><label for="creatures" class="primary">Creatures</label></td>
-        <td><input type="number" id="creatures" min="0" value="21" required></td>
+        <td><input type="number" id="creatures" min="0" max="50" value="21" required></td>
       </tr>
       <tr>
         <td><label for="sorceries" class="primary">Sorceries</label></td>
-        <td><input type="number" id="sorceries" min="0" value="4" required></td>
+        <td><input type="number" id="sorceries" min="0"  max="50" value="4" required></td>
       </tr>
       <tr>
         <td><label for="enchantments" class="primary">Enchantments</label></td>
-        <td><input type="number" id="enchantments" min="0" value="4" required></td>
+        <td><input type="number" id="enchantments" min="0" max="50" value="4" required></td>
       </tr>
       <tr>
         <td><label for="artifacts" class="primary">Artifacts</label></td>
-        <td><input type="number" id="artifacts" min="0" value="2" required></td>
+        <td><input type="number" id="artifacts" min="0" max="50" value="2" required></td>
       </tr>
       <tr>
         <td><label for="instants" class="primary">Instants</label></td>
-        <td>  <input type="number" id="instants" min="0" value="7" required></td>
+        <td>  <input type="number" id="instants" min="0" max="50" value="7" required></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="center"><button type="submit" >Save</button></td>
       </tr>
     </table>
   </form>

@@ -1,11 +1,11 @@
-const SelectView = require('./views/select_view.js');
 const DeckBuilder = require('./models/deckbuilder.js');
 const ResultView = require('./views/result_view.js');
+const FormView = require('./views/form_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const selectElement = document.querySelector('#color-select');
-  const selectView = new SelectView(selectElement);
-  selectView.bindEvents();
+  const formElement = document.querySelector('#input-criteria');
+  const formView = new FormView(formElement);
+  formView.bindEvents();
 
   const deckBuilder = new DeckBuilder();
   deckBuilder.bindEvents();
