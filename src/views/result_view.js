@@ -7,7 +7,6 @@ const ResultView = function(container) {
 
 ResultView.prototype.bindEvents = function () {
   PubSub.subscribe("DeckBuilder:data-loaded", data => {
-    this.container.innerHtml = '';
     const cards = data.detail;
     cards.forEach(card => {
       const cardView = new CardView(card, this.container);

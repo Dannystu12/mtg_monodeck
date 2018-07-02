@@ -1,8 +1,9 @@
 const SelectView = require('./select_view.js');
 const PubSub = require('../helpers/pub_sub.js');
 
-const FormView = function(formElement) {
+const FormView = function(formElement, resultContainer) {
   this.formElement = formElement;
+  this.resultContainer = resultContainer;
 };
 
 FormView.prototype.bindEvents = function () {
@@ -32,6 +33,10 @@ FormView.prototype.bindEvents = function () {
     if(totalCards < 60 || totalCards > 80){
       alert(`You chose ${totalCards} cards but decks need to be between 60 and 80 cards`);
       return;
+    }
+
+    while(this.resultContainer.firstChild){
+      this.resultContainer.removeChild(this.resultContainer.firstChild);
     }
 
     PubSub.publish('FormView:criteria-loaded', criteria);

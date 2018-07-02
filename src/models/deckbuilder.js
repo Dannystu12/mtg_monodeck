@@ -14,16 +14,17 @@ DeckBuilder.prototype.bindEvents = function () {
 };
 
 DeckBuilder.prototype.buildDeck = function (criteria) {
-  console.log(criteria);
+  this.cards = [];
   const color = this.colors[criteria.color];
-  const request = new Request(`https://api.magicthegathering.io/v1/cards?types=land&colorIdentity=${color[0]}&pageSize=1`);
+  const colorIdentity = color === 'Blue' ? 'U' : color[0];
+  const request = new Request(`https://api.magicthegathering.io/v1/cards?types=land&colorIdentity=${colorIdentity}&pageSize=1`);
   request.get(data => {
     const landCard = data.cards[0];
     landCard.qty = criteria.lands;
     if(landCard.qty > 0){
       this.cards.push(landCard)
-      PubSub.publish("DeckBuilder:data-loaded", this.cards);
     }
+    PubSub.publish("DeckBuilder:data-loaded", this.cards);
   });
 };
 
